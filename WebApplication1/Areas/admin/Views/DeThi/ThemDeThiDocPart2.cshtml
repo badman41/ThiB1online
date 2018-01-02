@@ -1,0 +1,78 @@
+﻿@using WebThiB1Online.Areas.admin.Models
+@{
+    ViewBag.Title = "ThemDeThi";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    List<CauHoi>
+    lst = (List<CauHoi>
+        )ViewData["lstDocPart1"];
+}
+
+<h2 class="center">Thêm đề thi phần đọc biển quảng cáo</h2>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="center">
+            <label>Mã đề: </label><input type="text" value="Đề 3" disabled="disabled" />
+        </div>
+    <br />
+    <br />
+
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="simple-table" class="table  table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            @*<th class="detail-col">Details</th>*@
+                            <th>Đoạn quảng cáo</th>
+                            <th>Đán án A</th>
+                            <th>Đáp án B</th>
+                            <th>Đáp án C</th>
+
+                            <th>Đáp án</th>
+                            
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (CauHoi c in lst)
+                        {
+                            <tr>
+                                <td class="center">
+                                    <label class="pos-rel">
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td><img height="150" class="thumbnail inline no-margin-bottom" alt="Ảnh không hợp lệ" src="~/Areas/admin/assets/image/BienQuangCao/2.png"></td>
+                                <td>@c.DapAnA</td>
+                                <td>@c.DapAnB</td>
+                                <td>@c.DapAnC</td>
+
+                                <td>@c.DapAn</td>
+
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        <div class="hr hr-18 dotted hr-double"></div>
+        <button type="button" class="btn btn-danger btn-sm">
+            <span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
+            Hủy
+        </button>
+        <button type="button" class="btn btn-success btn-sm">
+            <span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
+            Tạo đề thi
+        </button>
+       
+    </div><!-- /.span -->
+</div><!-- /.row -->

@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="B1OnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CauHoi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TieuDe" Type="varchar" MaxLength="100" />
+          <Property Name="PhuongAnA" Type="varchar" MaxLength="100" />
+          <Property Name="PhuongAnB" Type="varchar" MaxLength="100" />
+          <Property Name="PhuongAnC" Type="varchar" MaxLength="100" />
+          <Property Name="PhuongAnD" Type="varchar" MaxLength="100" />
+          <Property Name="DanAn" Type="varchar" MaxLength="100" />
+          <Property Name="IDNghe" Type="int" />
+          <Property Name="IDDoc" Type="int" />
+          <Property Name="IDDeThi" Type="int" />
+          <Property Name="IDChuDe" Type="int" />
+        </EntityType>
+        <EntityType Name="ChuDe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TenChuDe" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DeThi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDe" Type="nvarchar" MaxLength="20" />
+          <Property Name="IDChuDe" Type="int" />
+        </EntityType>
+        <EntityType Name="Doc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoanVan" Type="text" />
+          <Property Name="IDChuDe" Type="int" />
+        </EntityType>
+        <EntityType Name="Nghe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileNghe" Type="text" />
+          <Property Name="IDChuDe" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__CauHoi__IDChuDe__182C9B23">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CauHoi__IDDeThi__1920BF5C">
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeThi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDDeThi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CauHoi__IDDoc__1A14E395">
+          <End Role="Doc" Type="Self.Doc" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CauHoi__IDNghe__1B0907CE">
+          <End Role="Nghe" Type="Self.Nghe" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nghe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDNghe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeThi__IDChuDe__1BFD2C07">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeThi">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doc__IDChuDe__1CF15040">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="Doc" Type="Self.Doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Doc">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nghe__IDChuDe__1DE57479">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="Nghe" Type="Self.Nghe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nghe">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="B1OnlineModelStoreContainer">
+          <EntitySet Name="CauHoi" EntityType="Self.CauHoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChuDe" EntityType="Self.ChuDe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeThi" EntityType="Self.DeThi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doc" EntityType="Self.Doc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nghe" EntityType="Self.Nghe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CauHoi__IDChuDe__182C9B23" Association="Self.FK__CauHoi__IDChuDe__182C9B23">
+            <End Role="ChuDe" EntitySet="ChuDe" />
+            <End Role="CauHoi" EntitySet="CauHoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CauHoi__IDDeThi__1920BF5C" Association="Self.FK__CauHoi__IDDeThi__1920BF5C">
+            <End Role="DeThi" EntitySet="DeThi" />
+            <End Role="CauHoi" EntitySet="CauHoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CauHoi__IDDoc__1A14E395" Association="Self.FK__CauHoi__IDDoc__1A14E395">
+            <End Role="Doc" EntitySet="Doc" />
+            <End Role="CauHoi" EntitySet="CauHoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CauHoi__IDNghe__1B0907CE" Association="Self.FK__CauHoi__IDNghe__1B0907CE">
+            <End Role="Nghe" EntitySet="Nghe" />
+            <End Role="CauHoi" EntitySet="CauHoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeThi__IDChuDe__1BFD2C07" Association="Self.FK__DeThi__IDChuDe__1BFD2C07">
+            <End Role="ChuDe" EntitySet="ChuDe" />
+            <End Role="DeThi" EntitySet="DeThi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doc__IDChuDe__1CF15040" Association="Self.FK__Doc__IDChuDe__1CF15040">
+            <End Role="ChuDe" EntitySet="ChuDe" />
+            <End Role="Doc" EntitySet="Doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nghe__IDChuDe__1DE57479" Association="Self.FK__Nghe__IDChuDe__1DE57479">
+            <End Role="ChuDe" EntitySet="ChuDe" />
+            <End Role="Nghe" EntitySet="Nghe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="B1OnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CauHoi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TieuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhuongAnA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhuongAnB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhuongAnC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhuongAnD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DanAn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IDNghe" Type="Int32" />
+          <Property Name="IDDoc" Type="Int32" />
+          <Property Name="IDDeThi" Type="Int32" />
+          <Property Name="IDChuDe" Type="Int32" />
+          <NavigationProperty Name="ChuDe" Relationship="Self.FK__CauHoi__IDChuDe__182C9B23" FromRole="CauHoi" ToRole="ChuDe" />
+          <NavigationProperty Name="DeThi" Relationship="Self.FK__CauHoi__IDDeThi__1920BF5C" FromRole="CauHoi" ToRole="DeThi" />
+          <NavigationProperty Name="Doc" Relationship="Self.FK__CauHoi__IDDoc__1A14E395" FromRole="CauHoi" ToRole="Doc" />
+          <NavigationProperty Name="Nghe" Relationship="Self.FK__CauHoi__IDNghe__1B0907CE" FromRole="CauHoi" ToRole="Nghe" />
+        </EntityType>
+        <EntityType Name="ChuDe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TenChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CauHois" Relationship="Self.FK__CauHoi__IDChuDe__182C9B23" FromRole="ChuDe" ToRole="CauHoi" />
+          <NavigationProperty Name="DeThis" Relationship="Self.FK__DeThi__IDChuDe__1BFD2C07" FromRole="ChuDe" ToRole="DeThi" />
+          <NavigationProperty Name="Docs" Relationship="Self.FK__Doc__IDChuDe__1CF15040" FromRole="ChuDe" ToRole="Doc" />
+          <NavigationProperty Name="Nghes" Relationship="Self.FK__Nghe__IDChuDe__1DE57479" FromRole="ChuDe" ToRole="Nghe" />
+        </EntityType>
+        <EntityType Name="DeThi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDe" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IDChuDe" Type="Int32" />
+          <NavigationProperty Name="CauHois" Relationship="Self.FK__CauHoi__IDDeThi__1920BF5C" FromRole="DeThi" ToRole="CauHoi" />
+          <NavigationProperty Name="ChuDe" Relationship="Self.FK__DeThi__IDChuDe__1BFD2C07" FromRole="DeThi" ToRole="ChuDe" />
+        </EntityType>
+        <EntityType Name="Doc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoanVan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDChuDe" Type="Int32" />
+          <NavigationProperty Name="CauHois" Relationship="Self.FK__CauHoi__IDDoc__1A14E395" FromRole="Doc" ToRole="CauHoi" />
+          <NavigationProperty Name="ChuDe" Relationship="Self.FK__Doc__IDChuDe__1CF15040" FromRole="Doc" ToRole="ChuDe" />
+        </EntityType>
+        <EntityType Name="Nghe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileNghe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDChuDe" Type="Int32" />
+          <NavigationProperty Name="CauHois" Relationship="Self.FK__CauHoi__IDNghe__1B0907CE" FromRole="Nghe" ToRole="CauHoi" />
+          <NavigationProperty Name="ChuDe" Relationship="Self.FK__Nghe__IDChuDe__1DE57479" FromRole="Nghe" ToRole="ChuDe" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__CauHoi__IDChuDe__182C9B23">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CauHoi__IDDeThi__1920BF5C">
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeThi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDDeThi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CauHoi__IDDoc__1A14E395">
+          <End Role="Doc" Type="Self.Doc" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CauHoi__IDNghe__1B0907CE">
+          <End Role="Nghe" Type="Self.Nghe" Multiplicity="0..1" />
+          <End Role="CauHoi" Type="Self.CauHoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nghe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CauHoi">
+              <PropertyRef Name="IDNghe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeThi__IDChuDe__1BFD2C07">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="DeThi" Type="Self.DeThi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DeThi">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doc__IDChuDe__1CF15040">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="Doc" Type="Self.Doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Doc">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nghe__IDChuDe__1DE57479">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="Nghe" Type="Self.Nghe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nghe">
+              <PropertyRef Name="IDChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="B1OnlineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CauHois" EntityType="Self.CauHoi" />
+          <EntitySet Name="ChuDes" EntityType="Self.ChuDe" />
+          <EntitySet Name="DeThis" EntityType="Self.DeThi" />
+          <EntitySet Name="Docs" EntityType="Self.Doc" />
+          <EntitySet Name="Nghes" EntityType="Self.Nghe" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__CauHoi__IDChuDe__182C9B23" Association="Self.FK__CauHoi__IDChuDe__182C9B23">
+            <End Role="ChuDe" EntitySet="ChuDes" />
+            <End Role="CauHoi" EntitySet="CauHois" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CauHoi__IDDeThi__1920BF5C" Association="Self.FK__CauHoi__IDDeThi__1920BF5C">
+            <End Role="DeThi" EntitySet="DeThis" />
+            <End Role="CauHoi" EntitySet="CauHois" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CauHoi__IDDoc__1A14E395" Association="Self.FK__CauHoi__IDDoc__1A14E395">
+            <End Role="Doc" EntitySet="Docs" />
+            <End Role="CauHoi" EntitySet="CauHois" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CauHoi__IDNghe__1B0907CE" Association="Self.FK__CauHoi__IDNghe__1B0907CE">
+            <End Role="Nghe" EntitySet="Nghes" />
+            <End Role="CauHoi" EntitySet="CauHois" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeThi__IDChuDe__1BFD2C07" Association="Self.FK__DeThi__IDChuDe__1BFD2C07">
+            <End Role="ChuDe" EntitySet="ChuDes" />
+            <End Role="DeThi" EntitySet="DeThis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doc__IDChuDe__1CF15040" Association="Self.FK__Doc__IDChuDe__1CF15040">
+            <End Role="ChuDe" EntitySet="ChuDes" />
+            <End Role="Doc" EntitySet="Docs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nghe__IDChuDe__1DE57479" Association="Self.FK__Nghe__IDChuDe__1DE57479">
+            <End Role="ChuDe" EntitySet="ChuDes" />
+            <End Role="Nghe" EntitySet="Nghes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="B1OnlineModelStoreContainer" CdmEntityContainer="B1OnlineEntities">
+          <EntitySetMapping Name="CauHois">
+            <EntityTypeMapping TypeName="B1OnlineModel.CauHoi">
+              <MappingFragment StoreEntitySet="CauHoi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="PhuongAnA" ColumnName="PhuongAnA" />
+                <ScalarProperty Name="PhuongAnB" ColumnName="PhuongAnB" />
+                <ScalarProperty Name="PhuongAnC" ColumnName="PhuongAnC" />
+                <ScalarProperty Name="PhuongAnD" ColumnName="PhuongAnD" />
+                <ScalarProperty Name="DanAn" ColumnName="DanAn" />
+                <ScalarProperty Name="IDNghe" ColumnName="IDNghe" />
+                <ScalarProperty Name="IDDoc" ColumnName="IDDoc" />
+                <ScalarProperty Name="IDDeThi" ColumnName="IDDeThi" />
+                <ScalarProperty Name="IDChuDe" ColumnName="IDChuDe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChuDes">
+            <EntityTypeMapping TypeName="B1OnlineModel.ChuDe">
+              <MappingFragment StoreEntitySet="ChuDe">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenChuDe" ColumnName="TenChuDe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeThis">
+            <EntityTypeMapping TypeName="B1OnlineModel.DeThi">
+              <MappingFragment StoreEntitySet="DeThi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MaDe" ColumnName="MaDe" />
+                <ScalarProperty Name="IDChuDe" ColumnName="IDChuDe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Docs">
+            <EntityTypeMapping TypeName="B1OnlineModel.Doc">
+              <MappingFragment StoreEntitySet="Doc">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DoanVan" ColumnName="DoanVan" />
+                <ScalarProperty Name="IDChuDe" ColumnName="IDChuDe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nghes">
+            <EntityTypeMapping TypeName="B1OnlineModel.Nghe">
+              <MappingFragment StoreEntitySet="Nghe">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FileNghe" ColumnName="FileNghe" />
+                <ScalarProperty Name="IDChuDe" ColumnName="IDChuDe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="B1OnlineModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

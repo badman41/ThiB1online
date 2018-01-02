@@ -1,0 +1,10 @@
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\bin\Debug\DBEntity.dll.config
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\bin\Debug\DBEntity.dll
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\bin\Debug\DBEntity.pdb
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\bin\Debug\EntityFramework.dll
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\bin\Debug\EntityFramework.SqlServer.dll
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\bin\Debug\EntityFramework.xml
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\bin\Debug\EntityFramework.SqlServer.xml
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\obj\Debug\DBEntity.csprojResolveAssemblyReference.cache
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\obj\Debug\DBEntity.dll
+D:\CNWeb\KTraCHinh\Tạm\Shop\DBEntity\obj\Debug\DBEntity.pdb

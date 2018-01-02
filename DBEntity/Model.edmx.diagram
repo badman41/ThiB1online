@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4cabe914bfa3478f980696a14ab405b6" Name="Diagram1">
+        <EntityTypeShape EntityType="B1OnlineModel.CauHoi" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1OnlineModel.ChuDe" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1OnlineModel.DeThi" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1OnlineModel.Doc" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1OnlineModel.Nghe" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1OnlineModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="B1OnlineModel.FK__CauHoi__IDChuDe__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="B1OnlineModel.FK__CauHoi__IDDeThi__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="B1OnlineModel.FK__CauHoi__IDDoc__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="B1OnlineModel.FK__CauHoi__IDNghe__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="B1OnlineModel.FK__DeThi__IDChuDe__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="B1OnlineModel.FK__Doc__IDChuDe__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="B1OnlineModel.FK__Nghe__IDChuDe__1DE57479" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
